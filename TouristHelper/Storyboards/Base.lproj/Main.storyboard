@@ -60,6 +60,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="xat-aU-f0c" id="Qyh-di-sF0"/>
                         <outlet property="mapView" destination="hEo-ZF-3yw" id="eNM-yF-QKl"/>
+                        <outlet property="markerImageVerticalBottomConstraint" destination="Rpu-rR-4z5" id="o9Z-SL-K90"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

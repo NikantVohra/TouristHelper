@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property(nonatomic, strong) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *markerImageVerticalBottomConstraint;
 
 @end
 
@@ -62,7 +63,10 @@
         GMSAddress *address = result.firstResult;
         if(address) {
             self.addressLabel.text = [address.lines componentsJoinedByString:@"\n"];
+            CGFloat addressLabelHeight = self.addressLabel.intrinsicContentSize.height;
+            self.mapView.padding = UIEdgeInsetsMake([self.topLayoutGuide length], 0, addressLabelHeight, 0);
             [UIView animateWithDuration:0.25 animations:^{
+                self.markerImageVerticalBottomConstraint.constant = -((addressLabelHeight - [self.topLayoutGuide length]) * 0.5);
                 [self.view layoutIfNeeded];
             }];
         }
