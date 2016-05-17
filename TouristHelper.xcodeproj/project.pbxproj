@@ -15,6 +15,7 @@
 		0505DF5D1CEAB1D100DBD5A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0505DF5B1CEAB1D100DBD5A5 /* LaunchScreen.storyboard */; };
 		0505DF681CEAB1D100DBD5A5 /* TouristHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF671CEAB1D100DBD5A5 /* TouristHelperTests.m */; };
 		0505DF731CEAB1D100DBD5A5 /* TouristHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF721CEAB1D100DBD5A5 /* TouristHelperUITests.m */; };
+		EBE3891814CA6386640EC8B5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 565551A496184F0F417253D9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,9 @@
 		0505DF6E1CEAB1D100DBD5A5 /* TouristHelperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouristHelperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0505DF721CEAB1D100DBD5A5 /* TouristHelperUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouristHelperUITests.m; sourceTree = "<group>"; };
 		0505DF741CEAB1D100DBD5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		565551A496184F0F417253D9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB1B28760E6C658D78F304EC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E2D9C8BB73A418E19C4B1311 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBE3891814CA6386640EC8B5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,8 @@
 				0505DF661CEAB1D100DBD5A5 /* TouristHelperTests */,
 				0505DF711CEAB1D100DBD5A5 /* TouristHelperUITests */,
 				0505DF4B1CEAB1D100DBD5A5 /* Products */,
+				3E7D34EAC7C73506011DB49A /* Pods */,
+				D377B98A9A70CF519A67B179 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +147,23 @@
 			path = TouristHelperUITests;
 			sourceTree = "<group>";
 		};
+		3E7D34EAC7C73506011DB49A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2D9C8BB73A418E19C4B1311 /* Pods.debug.xcconfig */,
+				BB1B28760E6C658D78F304EC /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D377B98A9A70CF519A67B179 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				565551A496184F0F417253D9 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0505DF771CEAB1D100DBD5A5 /* Build configuration list for PBXNativeTarget "TouristHelper" */;
 			buildPhases = (
+				91F9D7B904D8CF998A9FF48F /* Check Pods Manifest.lock */,
 				0505DF461CEAB1D100DBD5A5 /* Sources */,
 				0505DF471CEAB1D100DBD5A5 /* Frameworks */,
 				0505DF481CEAB1D100DBD5A5 /* Resources */,
+				D56681CD39ED8A83B0955325 /* Embed Pods Frameworks */,
+				D8A8E8996E6E5B86C24335BC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +291,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		91F9D7B904D8CF998A9FF48F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D56681CD39ED8A83B0955325 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8A8E8996E6E5B86C24335BC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0505DF461CEAB1D100DBD5A5 /* Sources */ = {
@@ -413,6 +488,7 @@
 		};
 		0505DF781CEAB1D100DBD5A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2D9C8BB73A418E19C4B1311 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TouristHelper/Info.plist;
@@ -424,6 +500,7 @@
 		};
 		0505DF791CEAB1D100DBD5A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB1B28760E6C658D78F304EC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TouristHelper/Info.plist;
@@ -498,6 +575,7 @@
 				0505DF791CEAB1D100DBD5A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0505DF7A1CEAB1D100DBD5A5 /* Build configuration list for PBXNativeTarget "TouristHelperTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +584,7 @@
 				0505DF7C1CEAB1D100DBD5A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0505DF7D1CEAB1D100DBD5A5 /* Build configuration list for PBXNativeTarget "TouristHelperUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +593,7 @@
 				0505DF7F1CEAB1D100DBD5A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
