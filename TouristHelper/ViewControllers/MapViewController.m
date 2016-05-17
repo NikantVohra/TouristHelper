@@ -32,13 +32,31 @@
 }
 
 
+
+-(void)getAddressFromLocationCoordinate:(CLLocationCoordinate2D) coordinate {
+    GMSGeocoder *geocoder = [[GMSGeocoder alloc] init];
+    [geocoder reverseGeocodeCoordinate:coordinate completionHandler:^(GMSReverseGeocodeResponse * _Nullable result, NSError * _Nullable error) {
+        GMSAddress *address = result.firstResult;
+        if(address) {
+            self.addressLabel.text = [address.lines componentsJoinedByString:@"\n"];
+            CGFloat addressLabelHeight = self.addressLabel.intrinsicContentSize.height;
+            self.mapView.padding = UIEdgeInsetsMake([self.topLayoutGuide length], 0, addressLabelHeight, 0);
+            [UIView animateWithDuration:0.25 animations:^{
+                self.markerImageVerticalBottomConstraint.constant = -((addressLabelHeight - [self.topLayoutGuide length]) * 0.5); //adjust the marker image constraint to accomodate tha address label height
+                [self.view layoutIfNeeded];
+            }];
+        }
+        
+    }];
+}
+
+#pragma mark : CLLocationManager Methods
+
 -(void)setupLocationManager {
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
 }
-
-#pragma mark : Location Manager Methods
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if(status == kCLAuthorizationStatusAuthorizedWhenInUse) {
@@ -57,22 +75,7 @@
     }
 }
 
--(void)getAddressFromLocationCoordinate:(CLLocationCoordinate2D) coordinate {
-    GMSGeocoder *geocoder = [[GMSGeocoder alloc] init];
-    [geocoder reverseGeocodeCoordinate:coordinate completionHandler:^(GMSReverseGeocodeResponse * _Nullable result, NSError * _Nullable error) {
-        GMSAddress *address = result.firstResult;
-        if(address) {
-            self.addressLabel.text = [address.lines componentsJoinedByString:@"\n"];
-            CGFloat addressLabelHeight = self.addressLabel.intrinsicContentSize.height;
-            self.mapView.padding = UIEdgeInsetsMake([self.topLayoutGuide length], 0, addressLabelHeight, 0);
-            [UIView animateWithDuration:0.25 animations:^{
-                self.markerImageVerticalBottomConstraint.constant = -((addressLabelHeight - [self.topLayoutGuide length]) * 0.5); //adjust the marker image constraint to accomodate tha address label height
-                [self.view layoutIfNeeded];
-            }];
-        }
-        
-    }];
-}
+
 
 
 #pragma mark : GMSMapViewDelegate Methods
