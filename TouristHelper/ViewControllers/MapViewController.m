@@ -101,7 +101,6 @@ double nearbyRadius = 5000;
 
 
 
-
 #pragma mark : GMSMapViewDelegate Methods
 
 -(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position {
