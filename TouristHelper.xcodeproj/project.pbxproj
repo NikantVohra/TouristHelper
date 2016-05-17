@@ -13,7 +13,7 @@
 		0505DF891CEAB9B900DBD5A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF871CEAB9B800DBD5A5 /* AppDelegate.m */; };
 		0505DF8E1CEAB9C400DBD5A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0505DF8A1CEAB9C400DBD5A5 /* LaunchScreen.storyboard */; };
 		0505DF8F1CEAB9C400DBD5A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0505DF8C1CEAB9C400DBD5A5 /* Main.storyboard */; };
-		0505DF921CEAB9D000DBD5A5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF911CEAB9D000DBD5A5 /* ViewController.m */; };
+		0505DF921CEAB9D000DBD5A5 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF911CEAB9D000DBD5A5 /* MapViewController.m */; };
 		0505DF941CEAB9DE00DBD5A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0505DF931CEAB9DE00DBD5A5 /* Assets.xcassets */; };
 		0505DF961CEABB6800DBD5A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0505DF951CEABB6800DBD5A5 /* Localizable.strings */; };
 		EBE3891814CA6386640EC8B5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 565551A496184F0F417253D9 /* libPods.a */; };
@@ -50,8 +50,8 @@
 		0505DF881CEAB9B900DBD5A5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0505DF8B1CEAB9C400DBD5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0505DF8D1CEAB9C400DBD5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0505DF901CEAB9D000DBD5A5 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0505DF911CEAB9D000DBD5A5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0505DF901CEAB9D000DBD5A5 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		0505DF911CEAB9D000DBD5A5 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		0505DF931CEAB9DE00DBD5A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0505DF951CEABB6800DBD5A5 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		565551A496184F0F417253D9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,8 +161,8 @@
 		0505DF811CEAB95D00DBD5A5 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				0505DF871CEAB9B800DBD5A5 /* AppDelegate.m */,
 				0505DF881CEAB9B900DBD5A5 /* AppDelegate.h */,
+				0505DF871CEAB9B800DBD5A5 /* AppDelegate.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -200,8 +200,8 @@
 		0505DF861CEAB95D00DBD5A5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0505DF901CEAB9D000DBD5A5 /* ViewController.h */,
-				0505DF911CEAB9D000DBD5A5 /* ViewController.m */,
+				0505DF901CEAB9D000DBD5A5 /* MapViewController.h */,
+				0505DF911CEAB9D000DBD5A5 /* MapViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -407,7 +407,7 @@
 			files = (
 				0505DF891CEAB9B900DBD5A5 /* AppDelegate.m in Sources */,
 				0505DF4F1CEAB1D100DBD5A5 /* main.m in Sources */,
-				0505DF921CEAB9D000DBD5A5 /* ViewController.m in Sources */,
+				0505DF921CEAB9D000DBD5A5 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
