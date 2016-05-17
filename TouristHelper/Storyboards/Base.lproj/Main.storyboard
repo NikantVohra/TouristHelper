@@ -21,17 +21,31 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" red="0.6588235294" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mapMarker" translatesAutoresizingMaskIntoConstraints="NO" id="fHS-lH-QoU">
+                                <rect key="frame" x="285" y="273" width="30" height="55"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xat-aU-f0c">
+                                <rect key="frame" x="0.0" y="579" width="600" height="21"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xat-aU-f0c" secondAttribute="bottom" id="D1E-Jj-FjY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hEo-ZF-3yw" secondAttribute="bottom" id="Wd8-tC-UYt"/>
                             <constraint firstItem="hEo-ZF-3yw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="bRE-Bu-Yqb"/>
+                            <constraint firstItem="xat-aU-f0c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gPg-JH-5ls"/>
                             <constraint firstItem="hEo-ZF-3yw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kGy-gt-NgW"/>
+                            <constraint firstAttribute="trailing" secondItem="xat-aU-f0c" secondAttribute="trailing" id="qlY-ss-2Bh"/>
                             <constraint firstAttribute="trailing" secondItem="hEo-ZF-3yw" secondAttribute="trailing" id="z6v-XV-q77"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zrK-hi-SMk"/>
                     <connections>
+                        <outlet property="addressLabel" destination="xat-aU-f0c" id="Qyh-di-sF0"/>
                         <outlet property="mapView" destination="hEo-ZF-3yw" id="eNM-yF-QKl"/>
                     </connections>
                 </viewController>
@@ -58,4 +72,7 @@
             <point key="canvasLocation" x="275" y="114"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mapMarker" width="395" height="640"/>
+    </resources>
 </document>

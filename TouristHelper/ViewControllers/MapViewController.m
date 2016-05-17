@@ -9,10 +9,11 @@
 #import "MapViewController.h"
 @import GoogleMaps;
 
-@interface MapViewController() <CLLocationManagerDelegate>
+@interface MapViewController() <CLLocationManagerDelegate, GMSMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property(nonatomic, strong) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 
 @end
 
@@ -21,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLocationManager];
+    self.mapView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,12 +31,13 @@
 }
 
 
-
 -(void)setupLocationManager {
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
 }
+
+#pragma mark : Location Manager Methods
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if(status == kCLAuthorizationStatusAuthorizedWhenInUse) {
@@ -52,5 +55,28 @@
         [self.locationManager stopUpdatingLocation];
     }
 }
+
+-(void)getAddressFromLocationCoordinate:(CLLocationCoordinate2D) coordinate {
+    GMSGeocoder *geocoder = [[GMSGeocoder alloc] init];
+    [geocoder reverseGeocodeCoordinate:coordinate completionHandler:^(GMSReverseGeocodeResponse * _Nullable result, NSError * _Nullable error) {
+        
+        GMSAddress *address = result.firstResult;
+        if(address) {
+            self.addressLabel.text = [address.lines componentsJoinedByString:@"\n"];
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.view layoutIfNeeded];
+            }];
+        }
+        
+    }];
+}
+
+
+#pragma mark : GMSMapViewDelegate Methods
+
+-(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position {
+    [self getAddressFromLocationCoordinate:position.target];
+}
+
 
 @end
