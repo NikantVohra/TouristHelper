@@ -10,22 +10,18 @@
 
 @implementation GooglePlaceMarker
 
-
--(instancetype)initWithDictionary:(NSDictionary *)dictionary {
+-(instancetype)initWithPlace:(GooglePlace *)place {
     if(self = [super init]) {
-        self.name = dictionary[@"name"];
-        self.photoReference = dictionary[@"photos"][0][@"photoreference"];
-        CLLocationDegrees lat = [dictionary[@"geometry"][@"location"][@"lat"] doubleValue];
-        CLLocationDegrees lng = [dictionary[@"geometry"][@"location"][@"lng"] doubleValue];
-        self.locationCoordinate = CLLocationCoordinate2DMake(lat, lng);
-        self.placeType = [dictionary[@"types"] firstObject];
+        self.place = place;
+        self.position = place.locationCoordinate;
+        self.icon = [UIImage imageNamed:@"mapMarker"];
+        self.groundAnchor = CGPointMake(0.5, 1);
+        self.appearAnimation = kGMSMarkerAnimationPop;
         return self;
     }
     else {
         return nil;
     }
 }
-
-
 
 @end

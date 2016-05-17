@@ -7,15 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-@import GoogleMaps;
+#import "GooglePlace.h"
 
 @interface GooglePlaceMarker : GMSMarker
 
-@property(nonatomic, strong) NSString *name;
-@property(nonatomic, strong) NSString *photoReference;
-@property(nonatomic, strong) NSString *placeType;
-@property(nonatomic) CLLocationCoordinate2D locationCoordinate;
+@property(nonatomic, strong) GooglePlace *place;
 
--(instancetype)initWithDictionary:(NSDictionary *)dictionary;
+-(instancetype)initWithPlace:(GooglePlace *)place;
 
 @end
