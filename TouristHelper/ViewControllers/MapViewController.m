@@ -7,9 +7,10 @@
 //
 
 #import "MapViewController.h"
-@import GoogleMaps;
 #import "GooglePlaceService.h"
 #import "GooglePlaceMarker.h"
+#import "MarkerDetailView.h"
+@import GoogleMaps;
 
 @interface MapViewController() <CLLocationManagerDelegate, GMSMapViewDelegate>
 
@@ -25,7 +26,6 @@
 @implementation MapViewController
 
 double nearbyRadius = 5000;
-
 
 
 - (void)viewDidLoad {
@@ -69,6 +69,9 @@ double nearbyRadius = 5000;
         }
     }];
 }
+- (IBAction)refeshBarButtonPressed:(id)sender {
+    [self fetchNearbyPlaces:self.mapView.camera.target];
+}
 
 #pragma mark : CLLocationManager Methods
 
@@ -105,6 +108,21 @@ double nearbyRadius = 5000;
     [self getAddressFromLocationCoordinate:position.target];
 }
 
+-(UIView *)mapView:(GMSMapView *)mapView markerInfoContents:(nonnull GMSMarker *)marker {
+    MarkerDetailView *markerDetailView = [[[NSBundle mainBundle]loadNibNamed:@"MarkerDetailView" owner:self options:nil] firstObject];
+    GooglePlaceMarker *placeMarker = (GooglePlaceMarker *)marker;
+    if(markerDetailView) {
+        markerDetailView.placeNameLabel.text = placeMarker.place.name;
+        if(placeMarker.place.photo) {
+            markerDetailView.placeImageView.image = placeMarker.place.photo;
+        }
+        else {
+            markerDetailView.placeImageView.image = [UIImage imageNamed:@"placeholder"];
+        }
+        
+    }
+    return markerDetailView;
+}
 
 
 @end
