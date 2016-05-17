@@ -15,6 +15,7 @@
 		0505DF8F1CEAB9C400DBD5A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0505DF8C1CEAB9C400DBD5A5 /* Main.storyboard */; };
 		0505DF921CEAB9D000DBD5A5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF911CEAB9D000DBD5A5 /* ViewController.m */; };
 		0505DF941CEAB9DE00DBD5A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0505DF931CEAB9DE00DBD5A5 /* Assets.xcassets */; };
+		0505DF961CEABB6800DBD5A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0505DF951CEABB6800DBD5A5 /* Localizable.strings */; };
 		EBE3891814CA6386640EC8B5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 565551A496184F0F417253D9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		0505DF901CEAB9D000DBD5A5 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0505DF911CEAB9D000DBD5A5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0505DF931CEAB9DE00DBD5A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0505DF951CEABB6800DBD5A5 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		565551A496184F0F417253D9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1B28760E6C658D78F304EC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E2D9C8BB73A418E19C4B1311 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				0505DF931CEAB9DE00DBD5A5 /* Assets.xcassets */,
+				0505DF951CEABB6800DBD5A5 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0505DF8F1CEAB9C400DBD5A5 /* Main.storyboard in Resources */,
+				0505DF961CEABB6800DBD5A5 /* Localizable.strings in Resources */,
 				0505DF8E1CEAB9C400DBD5A5 /* LaunchScreen.storyboard in Resources */,
 				0505DF941CEAB9DE00DBD5A5 /* Assets.xcassets in Resources */,
 			);
