@@ -123,5 +123,10 @@ double nearbyRadius = 5000;
     return markerDetailView;
 }
 
+-(void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture {
+    if(gesture) {
+        mapView.selectedMarker = nil;
+    }
+}
 
 @end
