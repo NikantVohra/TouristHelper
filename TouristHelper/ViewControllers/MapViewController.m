@@ -9,35 +9,48 @@
 #import "MapViewController.h"
 @import GoogleMaps;
 
-@interface MapViewController ()
+@interface MapViewController() <CLLocationManagerDelegate>
+
+@property (weak, nonatomic) IBOutlet GMSMapView *mapView;
+@property(nonatomic, strong) CLLocationManager *locationManager;
 
 @end
 
-@implementation MapViewController {
-    GMSMapView *mapView_;
-}
+@implementation MapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-                                                            longitude:151.20
-                                                                 zoom:6];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.myLocationEnabled = YES;
-    self.view = mapView_;
-    
-    // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = mapView_;
+    [self setupLocationManager];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+-(void)setupLocationManager {
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager requestWhenInUseAuthorization];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if(status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        [self.locationManager startUpdatingLocation];
+        self.mapView.myLocationEnabled = YES;
+        self.mapView.settings.myLocationButton = YES;
+    }
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    CLLocation *currentLocation = [locations objectAtIndex:0];
+    if(currentLocation) {
+        self.mapView.camera =[GMSCameraPosition cameraWithTarget:currentLocation.coordinate zoom:15 bearing:0 viewingAngle:0];
+        [self.locationManager stopUpdatingLocation];
+    }
 }
 
 @end
