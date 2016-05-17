@@ -66,7 +66,7 @@
             CGFloat addressLabelHeight = self.addressLabel.intrinsicContentSize.height;
             self.mapView.padding = UIEdgeInsetsMake([self.topLayoutGuide length], 0, addressLabelHeight, 0);
             [UIView animateWithDuration:0.25 animations:^{
-                self.markerImageVerticalBottomConstraint.constant = -((addressLabelHeight - [self.topLayoutGuide length]) * 0.5);
+                self.markerImageVerticalBottomConstraint.constant = -((addressLabelHeight - [self.topLayoutGuide length]) * 0.5); //adjust the marker image constraint to accomodate tha address label height
                 [self.view layoutIfNeeded];
             }];
         }

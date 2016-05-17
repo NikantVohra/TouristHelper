@@ -16,6 +16,8 @@
 		0505DF921CEAB9D000DBD5A5 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF911CEAB9D000DBD5A5 /* MapViewController.m */; };
 		0505DF941CEAB9DE00DBD5A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0505DF931CEAB9DE00DBD5A5 /* Assets.xcassets */; };
 		0505DF961CEABB6800DBD5A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0505DF951CEABB6800DBD5A5 /* Localizable.strings */; };
+		0505DF991CEAED5B00DBD5A5 /* GooglePlaceMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF981CEAED5B00DBD5A5 /* GooglePlaceMarker.m */; };
+		0505DF9C1CEAEE4900DBD5A5 /* GooglePlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF9B1CEAEE4900DBD5A5 /* GooglePlace.m */; };
 		EBE3891814CA6386640EC8B5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 565551A496184F0F417253D9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,10 @@
 		0505DF911CEAB9D000DBD5A5 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		0505DF931CEAB9DE00DBD5A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0505DF951CEABB6800DBD5A5 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		0505DF971CEAED5B00DBD5A5 /* GooglePlaceMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooglePlaceMarker.h; sourceTree = "<group>"; };
+		0505DF981CEAED5B00DBD5A5 /* GooglePlaceMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooglePlaceMarker.m; sourceTree = "<group>"; };
+		0505DF9A1CEAEE4900DBD5A5 /* GooglePlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooglePlace.h; sourceTree = "<group>"; };
+		0505DF9B1CEAEE4900DBD5A5 /* GooglePlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooglePlace.m; sourceTree = "<group>"; };
 		565551A496184F0F417253D9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1B28760E6C658D78F304EC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E2D9C8BB73A418E19C4B1311 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +199,10 @@
 		0505DF851CEAB95D00DBD5A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0505DF971CEAED5B00DBD5A5 /* GooglePlaceMarker.h */,
+				0505DF981CEAED5B00DBD5A5 /* GooglePlaceMarker.m */,
+				0505DF9A1CEAEE4900DBD5A5 /* GooglePlace.h */,
+				0505DF9B1CEAEE4900DBD5A5 /* GooglePlace.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -405,8 +415,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0505DF9C1CEAEE4900DBD5A5 /* GooglePlace.m in Sources */,
 				0505DF891CEAB9B900DBD5A5 /* AppDelegate.m in Sources */,
 				0505DF4F1CEAB1D100DBD5A5 /* main.m in Sources */,
+				0505DF991CEAED5B00DBD5A5 /* GooglePlaceMarker.m in Sources */,
 				0505DF921CEAB9D000DBD5A5 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
