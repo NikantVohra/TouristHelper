@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Map View Controller-->
@@ -18,11 +19,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEo-ZF-3yw" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.6588235294" green="0.71372549019999998" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mapMarker" translatesAutoresizingMaskIntoConstraints="NO" id="fHS-lH-QoU">
-                                <rect key="frame" x="285" y="273" width="30" height="55"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapMarker" translatesAutoresizingMaskIntoConstraints="NO" id="fHS-lH-QoU">
+                                <rect key="frame" x="285" y="251" width="30" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="6pd-qc-WzG"/>
+                                    <constraint firstAttribute="width" constant="30" id="jRC-Wp-DOy"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6pd-qc-WzG"/>
+                                        <exclude reference="jRC-Wp-DOy"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xat-aU-f0c">
                                 <rect key="frame" x="0.0" y="579" width="600" height="21"/>
@@ -35,10 +46,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xat-aU-f0c" secondAttribute="bottom" id="D1E-Jj-FjY"/>
+                            <constraint firstItem="fHS-lH-QoU" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Rpu-rR-4z5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hEo-ZF-3yw" secondAttribute="bottom" id="Wd8-tC-UYt"/>
-                            <constraint firstItem="hEo-ZF-3yw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="bRE-Bu-Yqb"/>
+                            <constraint firstItem="hEo-ZF-3yw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="bRE-Bu-Yqb"/>
                             <constraint firstItem="xat-aU-f0c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gPg-JH-5ls"/>
                             <constraint firstItem="hEo-ZF-3yw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kGy-gt-NgW"/>
+                            <constraint firstItem="fHS-lH-QoU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pX4-xA-sfT"/>
                             <constraint firstAttribute="trailing" secondItem="xat-aU-f0c" secondAttribute="trailing" id="qlY-ss-2Bh"/>
                             <constraint firstAttribute="trailing" secondItem="hEo-ZF-3yw" secondAttribute="trailing" id="z6v-XV-q77"/>
                         </constraints>
@@ -73,6 +86,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mapMarker" width="395" height="640"/>
+        <image name="mapMarker" width="30" height="49"/>
     </resources>
 </document>

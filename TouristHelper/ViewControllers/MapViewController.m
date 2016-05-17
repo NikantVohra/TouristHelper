@@ -59,7 +59,6 @@
 -(void)getAddressFromLocationCoordinate:(CLLocationCoordinate2D) coordinate {
     GMSGeocoder *geocoder = [[GMSGeocoder alloc] init];
     [geocoder reverseGeocodeCoordinate:coordinate completionHandler:^(GMSReverseGeocodeResponse * _Nullable result, NSError * _Nullable error) {
-        
         GMSAddress *address = result.firstResult;
         if(address) {
             self.addressLabel.text = [address.lines componentsJoinedByString:@"\n"];
@@ -77,6 +76,7 @@
 -(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position {
     [self getAddressFromLocationCoordinate:position.target];
 }
+
 
 
 @end
