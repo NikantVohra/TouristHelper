@@ -21,7 +21,7 @@
 
 NSString *const GooglePlacesAPIKey = @"AIzaSyD_1wjarbzsxkpAYz_RoKX0CIzS0Ba7USs";
 NSString *const GooglePlacesAPIBaseURL = @"https://maps.googleapis.com/maps/api/place/";
-
+NSString *const defaultPlaceTypes = @"food";
 
 -(instancetype)init {
     if(self = [super init]) {
@@ -109,7 +109,7 @@ NSString *const GooglePlacesAPIBaseURL = @"https://maps.googleapis.com/maps/api/
         return [types componentsJoinedByString:@"|"];
     }
     else {
-        return @"";
+        return defaultPlaceTypes;
     }
 }
 

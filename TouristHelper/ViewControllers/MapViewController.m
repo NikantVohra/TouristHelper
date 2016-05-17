@@ -8,22 +8,31 @@
 
 #import "MapViewController.h"
 @import GoogleMaps;
+#import "GooglePlaceService.h"
+#import "GooglePlaceMarker.h"
 
 @interface MapViewController() <CLLocationManagerDelegate, GMSMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
-@property(nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *markerImageVerticalBottomConstraint;
-
+@property (nonatomic, strong) GooglePlaceService *googlePlaceService;
 @end
 
+
+
 @implementation MapViewController
+
+double nearbyRadius = 5000;
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLocationManager];
     self.mapView.delegate = self;
+    self.googlePlaceService = [[GooglePlaceService alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +59,17 @@
     }];
 }
 
+-(void)fetchNearbyPlaces:(CLLocationCoordinate2D) coordinate {
+    [self.googlePlaceService fetchNearbyPlacesFromLocation:coordinate withinRadius:nearbyRadius types:nil onCompletion:^(NSArray *googlePlaces, NSError *error) {
+        if(error == nil) {
+            for(GooglePlace *place in googlePlaces) {
+                GooglePlaceMarker *marker = [[GooglePlaceMarker alloc] initWithPlace:place];
+                marker.map = self.mapView;
+            }
+        }
+    }];
+}
+
 #pragma mark : CLLocationManager Methods
 
 -(void)setupLocationManager {
@@ -72,6 +92,7 @@
     if(currentLocation) {
         self.mapView.camera =[GMSCameraPosition cameraWithTarget:currentLocation.coordinate zoom:15 bearing:0 viewingAngle:0];
         [self.locationManager stopUpdatingLocation];
+        [self fetchNearbyPlaces:currentLocation.coordinate];
     }
 }
 
