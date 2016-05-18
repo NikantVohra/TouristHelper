@@ -35,7 +35,7 @@ NSString *const defaultPlaceTypes = @"food";
 
 -(void)fetchNearbyPlacesFromLocation:(CLLocationCoordinate2D)coordinate withinRadius:(double)radius types:(NSArray *)types onCompletion:(void(^)(NSArray *googlePlaces, NSError *error))completion {
     
-    NSString *url = [NSString stringWithFormat:@"%@nearbysearch/json?location=%f,%f&radius=%f&rankby=prominence&sensor=true&key=%@&types=%@",GooglePlacesAPIBaseURL, coordinate.latitude, coordinate.longitude, radius, GooglePlacesAPIKey, [self placesTypeString:types]];
+    NSString *url = [NSString stringWithFormat:@"%@radarsearch/json?location=%f,%f&radius=%f&rankby=prominence&sensor=true&key=%@&types=%@",GooglePlacesAPIBaseURL, coordinate.latitude, coordinate.longitude, radius, GooglePlacesAPIKey, [self placesTypeString:types]];
     url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     if([self isDataTaskAlreadyRunning]) {

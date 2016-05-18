@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "GooglePlace.h"
+#import <CoreLocation/CoreLocation.h>
+
 
 @interface GooglePlaceService : NSObject
 

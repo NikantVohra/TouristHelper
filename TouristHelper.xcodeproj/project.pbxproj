@@ -21,6 +21,8 @@
 		0505DFA01CEAF72400DBD5A5 /* GooglePlaceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF9F1CEAF72400DBD5A5 /* GooglePlaceService.m */; };
 		0505DFA61CEB210500DBD5A5 /* MarkerDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DFA51CEB210500DBD5A5 /* MarkerDetailView.m */; };
 		0505DFAA1CEB216B00DBD5A5 /* MarkerDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0505DFA91CEB216B00DBD5A5 /* MarkerDetailView.xib */; };
+		0505DFAC1CEC410400DBD5A5 /* GooglePlaceServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DFAB1CEC410400DBD5A5 /* GooglePlaceServiceTests.m */; };
+		05B4084D3E16B34666DAB3F6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 565551A496184F0F417253D9 /* libPods.a */; };
 		EBE3891814CA6386640EC8B5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 565551A496184F0F417253D9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,7 @@
 		0505DFA41CEB210500DBD5A5 /* MarkerDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkerDetailView.h; sourceTree = "<group>"; };
 		0505DFA51CEB210500DBD5A5 /* MarkerDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkerDetailView.m; sourceTree = "<group>"; };
 		0505DFA91CEB216B00DBD5A5 /* MarkerDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerDetailView.xib; sourceTree = "<group>"; };
+		0505DFAB1CEC410400DBD5A5 /* GooglePlaceServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooglePlaceServiceTests.m; sourceTree = "<group>"; };
 		565551A496184F0F417253D9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1B28760E6C658D78F304EC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E2D9C8BB73A418E19C4B1311 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B4084D3E16B34666DAB3F6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +155,7 @@
 			children = (
 				0505DF671CEAB1D100DBD5A5 /* TouristHelperTests.m */,
 				0505DF691CEAB1D100DBD5A5 /* Info.plist */,
+				0505DFAB1CEC410400DBD5A5 /* GooglePlaceServiceTests.m */,
 			);
 			path = TouristHelperTests;
 			sourceTree = "<group>";
@@ -281,9 +286,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0505DF7A1CEAB1D100DBD5A5 /* Build configuration list for PBXNativeTarget "TouristHelperTests" */;
 			buildPhases = (
+				38E4699F967C5259F4C93D12 /* Check Pods Manifest.lock */,
 				0505DF5F1CEAB1D100DBD5A5 /* Sources */,
 				0505DF601CEAB1D100DBD5A5 /* Frameworks */,
 				0505DF611CEAB1D100DBD5A5 /* Resources */,
+				423947A132EE10E5183A1196 /* Embed Pods Frameworks */,
+				9205AD700C93F4079F8FE4E2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -385,6 +393,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		38E4699F967C5259F4C93D12 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		423947A132EE10E5183A1196 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		91F9D7B904D8CF998A9FF48F /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,6 +436,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9205AD700C93F4079F8FE4E2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D56681CD39ED8A83B0955325 /* Embed Pods Frameworks */ = {
@@ -451,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0505DFAC1CEC410400DBD5A5 /* GooglePlaceServiceTests.m in Sources */,
 				0505DF681CEAB1D100DBD5A5 /* TouristHelperTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,6 +662,7 @@
 		};
 		0505DF7B1CEAB1D100DBD5A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2D9C8BB73A418E19C4B1311 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TouristHelperTests/Info.plist;
@@ -620,6 +675,7 @@
 		};
 		0505DF7C1CEAB1D100DBD5A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB1B28760E6C658D78F304EC /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TouristHelperTests/Info.plist;
