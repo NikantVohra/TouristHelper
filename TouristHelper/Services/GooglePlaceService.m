@@ -44,25 +44,44 @@ NSString *const defaultPlaceTypes = @"food";
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
+    
+    __block NSError *storedError;
     self.fetchNearbyPlacesTask = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         if(!error) {
             NSMutableArray *googlePlaces = [[NSMutableArray alloc] init];
             NSError* conversionError;
+            dispatch_group_t fetchPlacesGroup = dispatch_group_create();
+
             NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
                                                                  options:kNilOptions
                                                                    error:&conversionError];
             if(!conversionError) {
                 NSArray *fetchedPlaces = json[@"results"];
                 for(NSDictionary *fetchedPlace in fetchedPlaces) {
-                    GooglePlace *place = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
-                    [googlePlaces addObject:place];
-                    [self fetchPhotoForPlace:place];
+                    GooglePlace *googlePlace = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
+                    dispatch_group_enter(fetchPlacesGroup);
+                    [googlePlaces addObject:googlePlace];
+
+//                    [self fetchPlaceInfoWithId:googlePlace.placeId onCompletion:^(GooglePlace *place, NSError *error) {
+//                        if(error == nil) {
+//                            [googlePlaces addObject:place];
+//                        }
+//                        else {
+//                            storedError = error;
+//                        }
+//                        dispatch_group_leave(fetchPlacesGroup);
+//                        
+//                    }];
+                    dispatch_group_leave(fetchPlacesGroup);
                 }
+                
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(googlePlaces, nil);
+            dispatch_group_notify(fetchPlacesGroup, dispatch_get_main_queue(), ^{
+                completion(googlePlaces, storedError);
             });
+            
+            
         }
         
         else {
@@ -89,11 +108,19 @@ NSString *const defaultPlaceTypes = @"food";
             if(!conversionError) {
                 NSDictionary *fetchedPlace = json[@"result"];
                 place = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
-                [self fetchPhotoForPlace:place];
+                [self fetchPhotoForPlace:place withCompletion:^(UIImage *image, NSError *error) {
+                    if(error == nil) {
+                        place.photo = image;
+                        completion(place, nil);
+                       
+                    }
+                    else {
+                        completion(nil, error);
+                        
+                    }
+                }];
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(place, nil);
-            });
+            
             
         }
         else {
@@ -105,7 +132,7 @@ NSString *const defaultPlaceTypes = @"food";
     }] resume];
 }
 
--(void)fetchPhotoForPlace:(GooglePlace *)place {
+-(void)fetchPhotoForPlace:(GooglePlace *)place withCompletion:(void(^)(UIImage *image, NSError *error)) completion {
     if(place.photoReference) {
         UIImage *cachedImage = [self.photoCache objectForKey:place.photoReference];
         if(cachedImage) {
@@ -117,7 +144,10 @@ NSString *const defaultPlaceTypes = @"food";
                 if(error == nil) {
                     UIImage *googlePlacePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
                     [self.photoCache setObject:googlePlacePhoto forKey:place.photoReference];
-                    place.photo = googlePlacePhoto;
+                    completion(googlePlacePhoto, nil);
+                }
+                else {
+                    completion(nil, error);
                 }
             }] resume];
         }
