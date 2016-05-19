@@ -76,6 +76,35 @@ NSString *const defaultPlaceTypes = @"food";
     
 }
 
+-(void)fetchPlaceInfoWithId:(NSString *)placeId onCompletion:(void(^)(GooglePlace *place, NSError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@details/json?placeid=%@&key=%@", GooglePlacesAPIBaseURL, placeId, GooglePlacesAPIKey];
+    url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if(!error) {
+            NSError* conversionError;
+            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
+                                                                 options:kNilOptions
+                                                                error:&conversionError];
+            GooglePlace *place;
+            if(!conversionError) {
+                NSDictionary *fetchedPlace = json[@"result"];
+                place = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
+                [self fetchPhotoForPlace:place];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(place, nil);
+            });
+            
+        }
+        else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, error);
+            });
+
+        }
+    }] resume];
+}
+
 -(void)fetchPhotoForPlace:(GooglePlace *)place {
     if(place.photoReference) {
         UIImage *cachedImage = [self.photoCache objectForKey:place.photoReference];

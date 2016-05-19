@@ -14,6 +14,7 @@
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary {
     if(self = [super init]) {
         self.name = dictionary[@"name"];
+        self.placeId = dictionary[@"place_id"];
         self.photoReference = dictionary[@"photos"][0][@"photo_reference"];
         CLLocationDegrees lat = [dictionary[@"geometry"][@"location"][@"lat"] doubleValue];
         CLLocationDegrees lng = [dictionary[@"geometry"][@"location"][@"lng"] doubleValue];

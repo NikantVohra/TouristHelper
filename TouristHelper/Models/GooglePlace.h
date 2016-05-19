@@ -12,11 +12,13 @@
 
 @interface GooglePlace : NSObject
 
+@property(nonatomic, strong) NSString *placeId;
 @property(nonatomic, strong) NSString *name;
 @property(nonatomic, strong) NSString *photoReference; //photoreference is a reference id returned by google places api that can be        used to retrieve the place image
 @property(nonatomic, strong) UIImage *photo;
 @property(nonatomic, strong) NSString *placeType;
 @property(nonatomic) CLLocationCoordinate2D locationCoordinate;
+
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end
