@@ -58,22 +58,22 @@ NSString *const defaultPlaceTypes = @"food";
                                                                    error:&conversionError];
             if(!conversionError) {
                 NSArray *fetchedPlaces = json[@"results"];
+               // NSDictionary *fetchedPlace = [fetchedPlaces objectAtIndex:0];
                 for(NSDictionary *fetchedPlace in fetchedPlaces) {
                     GooglePlace *googlePlace = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
                     dispatch_group_enter(fetchPlacesGroup);
-                    [googlePlaces addObject:googlePlace];
+                        // Do stuff on a global background queue here
+                    [self fetchPlaceInfoWithId:googlePlace.placeId onCompletion:^(GooglePlace *place, NSError *error) {
+                        if(error == nil) {
+                            [googlePlaces addObject:place];
+                        }
+                        else {
+                            storedError = error;
+                        }
+                        dispatch_group_leave(fetchPlacesGroup);
 
-//                    [self fetchPlaceInfoWithId:googlePlace.placeId onCompletion:^(GooglePlace *place, NSError *error) {
-//                        if(error == nil) {
-//                            [googlePlaces addObject:place];
-//                        }
-//                        else {
-//                            storedError = error;
-//                        }
-//                        dispatch_group_leave(fetchPlacesGroup);
-//                        
-//                    }];
-                    dispatch_group_leave(fetchPlacesGroup);
+                        
+                    }];
                 }
                 
             }
@@ -154,6 +154,7 @@ NSString *const defaultPlaceTypes = @"food";
     }
     else {
         place.photo = nil;
+        completion(nil, nil);
     }
 }
 

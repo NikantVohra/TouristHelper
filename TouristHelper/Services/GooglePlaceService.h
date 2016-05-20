@@ -14,6 +14,7 @@
 @interface GooglePlaceService : NSObject
 
 -(void)fetchNearbyPlacesFromLocation:(CLLocationCoordinate2D)coordinate withinRadius:(double)radius types:(NSArray *)types onCompletion:(void(^)(NSArray *googlePlaces, NSError *error))completion;
+
 -(void)fetchPlaceInfoWithId:(NSString *)placeId onCompletion:(void(^)(GooglePlace *place, NSError *error))completion;
 
 @end

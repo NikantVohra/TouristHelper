@@ -25,7 +25,7 @@
 
 @implementation MapViewController
 
-double nearbyRadius = 5000;
+double nearbyRadius = 1000;
 
 
 - (void)viewDidLoad {
@@ -111,21 +111,18 @@ double nearbyRadius = 5000;
     MarkerDetailView *markerDetailView = [[[NSBundle mainBundle]loadNibNamed:@"MarkerDetailView" owner:self options:nil] firstObject];
     GooglePlaceMarker *placeMarker = (GooglePlaceMarker *)marker;
     if(markerDetailView) {
-        [self.googlePlaceService fetchPlaceInfoWithId:placeMarker.place.placeId onCompletion:^(GooglePlace *place, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                placeMarker.place = place;
-                markerDetailView.placeNameLabel.text = placeMarker.place.name;
-                if(placeMarker.place.photo) {
-                    markerDetailView.placeImageView.image = placeMarker.place.photo;
-                }
-                else {
-                    markerDetailView.placeImageView.image = [UIImage imageNamed:@"placeholder"];
-                }
-            });
-
-        }];
+        
+        markerDetailView.placeNameLabel.text = placeMarker.place.name;
+        if(placeMarker.place.photo) {
+            markerDetailView.placeImageView.image = placeMarker.place.photo;
+        }
+        else {
+            markerDetailView.placeImageView.image = [UIImage imageNamed:@"placeholder"];
+        }
+        
         
     }
+
     return markerDetailView;
 }
 
