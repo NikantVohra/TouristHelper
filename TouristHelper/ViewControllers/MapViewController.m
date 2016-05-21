@@ -26,7 +26,7 @@
 
 @implementation MapViewController
 
-double nearbyRadius = 1000;
+double nearbyRadius = 2000;
 
 
 - (void)viewDidLoad {
@@ -61,6 +61,7 @@ double nearbyRadius = 1000;
 }
 
 -(void)fetchNearbyPlaces:(CLLocationCoordinate2D) coordinate {
+    [self.mapView clear];
     [self.googlePlaceService fetchNearbyPlacesFromLocation:coordinate withinRadius:nearbyRadius types:nil onCompletion:^(NSArray *googlePlaces, NSError *error) {
         if(error == nil) {
             for(GooglePlace *place in googlePlaces) {

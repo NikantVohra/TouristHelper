@@ -15,6 +15,7 @@
 
 @implementation GooglePlaceServiceTests {
     GooglePlaceService *googlePlaceService;
+    
 }
 
 - (void)setUp {
@@ -34,7 +35,7 @@
     loc.latitude = 37.376;
     loc.longitude = -121.957;
     [googlePlaceService fetchNearbyPlacesFromLocation:loc withinRadius:2000 types:nil onCompletion:^(NSArray *googlePlaces, NSError *error) {
-        XCTAssertEqual(googlePlaces.count, 87);
+        XCTAssertEqual(googlePlaces.count, 88);
         [fetchNearbyPlacesExpectation fulfill];
 
     }];
@@ -49,12 +50,24 @@
     loc.latitude = 37.376;
     loc.longitude = -121.957;
     [googlePlaceService fetchNearbyPlacesFromLocation:loc withinRadius:2000 types:@[@"bar", @"food", @"museum", @"night_club", @"gas_station", @"airport"] onCompletion:^(NSArray *googlePlaces, NSError *error) {
-        XCTAssertEqual(googlePlaces.count, 98);
+        XCTAssertEqual(googlePlaces.count, 99);
         [fetchNearbyPlacesExpectation fulfill];
         
     }];
     
     [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+    }];
+}
+
+-(void)testFetchPlaceInfo {
+    XCTestExpectation *fetchPlaceInfoExpectation = [self expectationWithDescription:@"fetchPlaceInfoExpectation"];
+    [googlePlaceService fetchPlaceInfoWithId:@"ChIJN1t_tDeuEmsRUsoyG83frY4" onCompletion:^(GooglePlace*place, NSError *error) {
+        XCTAssertEqualObjects(@"Google", place.name);
+        [fetchPlaceInfoExpectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+        
     }];
 }
 
