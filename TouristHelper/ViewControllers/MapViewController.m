@@ -13,7 +13,7 @@
 #import "OptimalRoute.h"
 @import GoogleMaps;
 
-@interface MapViewController() <CLLocationManagerDelegate, GMSMapViewDelegate>
+@interface MapViewController() <CLLocationManagerDelegate, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -85,6 +85,12 @@ double nearbyRadius = 1000;
     [self fetchNearbyPlaces:self.mapView.camera.target];
 }
 
+- (IBAction)searchLocation:(id)sender {
+    GMSAutocompleteViewController *autocompleteController = [[GMSAutocompleteViewController alloc] init];
+    autocompleteController.delegate = self;
+    [self presentViewController:autocompleteController animated:YES completion:nil];
+}
+
 #pragma mark : CLLocationManager Methods
 
 -(void)setupLocationManager {
@@ -143,6 +149,25 @@ double nearbyRadius = 1000;
     if(gesture) {
         mapView.selectedMarker = nil;
     }
+}
+
+#pragma mark : GMSAutocompleteViewControllerDelegate Methods
+
+-(void)viewController:(GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(GMSPlace *)place {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    self.mapView.camera =[GMSCameraPosition cameraWithTarget:place.coordinate zoom:15 bearing:0 viewingAngle:0];
+
+}
+
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+didFailAutocompleteWithError:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"Error: %@", [error description]);
+}
+
+// User canceled the operation.
+- (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

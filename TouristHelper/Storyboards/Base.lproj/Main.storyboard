@@ -57,9 +57,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tourist Helper" id="zrK-hi-SMk">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="tYf-b8-2YN">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="tYf-b8-2YN">
                             <connections>
                                 <action selector="refeshBarButtonPressed:" destination="BYZ-38-t0r" id="uce-uN-OKw"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="search" id="WQf-vg-5fv">
+                            <connections>
+                                <action selector="searchLocation:" destination="BYZ-38-t0r" id="U4w-jh-gYO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -71,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087" y="114"/>
+            <point key="canvasLocation" x="1152" y="98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eCW-w2-Mfm">
