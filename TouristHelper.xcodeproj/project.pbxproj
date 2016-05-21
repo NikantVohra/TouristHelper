@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		050592581CF00DCE00F4E6C9 /* OptimalRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 050592571CF00DCE00F4E6C9 /* OptimalRoute.m */; };
+		0505925D1CF0330800F4E6C9 /* GooglePlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505925C1CF0330800F4E6C9 /* GooglePlaceTests.m */; };
 		0505DF4F1CEAB1D100DBD5A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF4E1CEAB1D100DBD5A5 /* main.m */; };
 		0505DF681CEAB1D100DBD5A5 /* TouristHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF671CEAB1D100DBD5A5 /* TouristHelperTests.m */; };
 		0505DF731CEAB1D100DBD5A5 /* TouristHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF721CEAB1D100DBD5A5 /* TouristHelperUITests.m */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		050592561CF00DCE00F4E6C9 /* OptimalRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptimalRoute.h; sourceTree = "<group>"; };
 		050592571CF00DCE00F4E6C9 /* OptimalRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptimalRoute.m; sourceTree = "<group>"; };
+		0505925C1CF0330800F4E6C9 /* GooglePlaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooglePlaceTests.m; sourceTree = "<group>"; };
 		0505DF4A1CEAB1D100DBD5A5 /* TouristHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0505DF4E1CEAB1D100DBD5A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0505DF5E1CEAB1D100DBD5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				0505DF671CEAB1D100DBD5A5 /* TouristHelperTests.m */,
 				0505DF691CEAB1D100DBD5A5 /* Info.plist */,
 				0505DFAB1CEC410400DBD5A5 /* GooglePlaceServiceTests.m */,
+				0505925C1CF0330800F4E6C9 /* GooglePlaceTests.m */,
 			);
 			path = TouristHelperTests;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0505DFAC1CEC410400DBD5A5 /* GooglePlaceServiceTests.m in Sources */,
+				0505925D1CF0330800F4E6C9 /* GooglePlaceTests.m in Sources */,
 				0505DF681CEAB1D100DBD5A5 /* TouristHelperTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

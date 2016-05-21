@@ -63,6 +63,7 @@
     XCTestExpectation *fetchPlaceInfoExpectation = [self expectationWithDescription:@"fetchPlaceInfoExpectation"];
     [googlePlaceService fetchPlaceInfoWithId:@"ChIJN1t_tDeuEmsRUsoyG83frY4" onCompletion:^(GooglePlace*place, NSError *error) {
         XCTAssertEqualObjects(@"Google", place.name);
+        XCTAssertNotNil(place.photo);
         [fetchPlaceInfoExpectation fulfill];
     }];
     
