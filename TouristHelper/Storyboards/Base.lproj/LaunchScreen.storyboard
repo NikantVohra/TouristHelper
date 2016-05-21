@@ -16,7 +16,28 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tourist Helper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAp-WJ-SA6">
+                                <rect key="frame" x="225.5" y="285" width="149" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mapMarker" translatesAutoresizingMaskIntoConstraints="NO" id="v4G-Kg-fu4">
+                                <rect key="frame" x="285" y="232" width="30" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="cdR-3Y-FSi"/>
+                                    <constraint firstAttribute="height" constant="49" id="nNP-H2-cpF"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qAp-WJ-SA6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Ph-eP-x7w"/>
+                            <constraint firstItem="qAp-WJ-SA6" firstAttribute="top" secondItem="v4G-Kg-fu4" secondAttribute="bottom" constant="8" id="6kM-EG-ECV"/>
+                            <constraint firstItem="v4G-Kg-fu4" firstAttribute="centerX" secondItem="qAp-WJ-SA6" secondAttribute="centerX" id="Kwt-bF-yv8"/>
+                            <constraint firstItem="qAp-WJ-SA6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="cya-PA-a3m"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +45,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mapMarker" width="30" height="49"/>
+    </resources>
 </document>

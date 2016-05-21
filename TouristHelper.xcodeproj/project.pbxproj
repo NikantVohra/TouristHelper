@@ -11,6 +11,8 @@
 		0505925D1CF0330800F4E6C9 /* GooglePlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505925C1CF0330800F4E6C9 /* GooglePlaceTests.m */; };
 		0505925F1CF0407100F4E6C9 /* OptimalRouteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505925E1CF0407100F4E6C9 /* OptimalRouteTests.m */; };
 		050592621CF0650200F4E6C9 /* PlaceTypesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 050592611CF0650200F4E6C9 /* PlaceTypesTableViewController.m */; };
+		0505926F1CF091C000F4E6C9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505926E1CF091C000F4E6C9 /* Reachability.m */; };
+		050592711CF0968300F4E6C9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 050592701CF0968300F4E6C9 /* SystemConfiguration.framework */; };
 		0505DF4F1CEAB1D100DBD5A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF4E1CEAB1D100DBD5A5 /* main.m */; };
 		0505DF681CEAB1D100DBD5A5 /* TouristHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF671CEAB1D100DBD5A5 /* TouristHelperTests.m */; };
 		0505DF731CEAB1D100DBD5A5 /* TouristHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF721CEAB1D100DBD5A5 /* TouristHelperUITests.m */; };
@@ -54,6 +56,9 @@
 		0505925E1CF0407100F4E6C9 /* OptimalRouteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptimalRouteTests.m; sourceTree = "<group>"; };
 		050592601CF0650200F4E6C9 /* PlaceTypesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceTypesTableViewController.h; sourceTree = "<group>"; };
 		050592611CF0650200F4E6C9 /* PlaceTypesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTypesTableViewController.m; sourceTree = "<group>"; };
+		0505926D1CF091C000F4E6C9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		0505926E1CF091C000F4E6C9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		050592701CF0968300F4E6C9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0505DF4A1CEAB1D100DBD5A5 /* TouristHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0505DF4E1CEAB1D100DBD5A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0505DF5E1CEAB1D100DBD5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				050592711CF0968300F4E6C9 /* SystemConfiguration.framework in Frameworks */,
 				EBE3891814CA6386640EC8B5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0505926C1CF091C000F4E6C9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0505926D1CF091C000F4E6C9 /* Reachability.h */,
+				0505926E1CF091C000F4E6C9 /* Reachability.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		0505DF411CEAB1D100DBD5A5 = {
 			isa = PBXGroup;
 			children = (
@@ -138,11 +153,11 @@
 		0505DF4C1CEAB1D100DBD5A5 /* TouristHelper */ = {
 			isa = PBXGroup;
 			children = (
+				0505926C1CF091C000F4E6C9 /* Helpers */,
 				0505DF9D1CEAF71000DBD5A5 /* Services */,
 				0505DF801CEAB95D00DBD5A5 /* Resources */,
 				0505DF811CEAB95D00DBD5A5 /* App */,
 				0505DF821CEAB95D00DBD5A5 /* Storyboards */,
-				0505DF831CEAB95D00DBD5A5 /* Helpers */,
 				0505DF841CEAB95D00DBD5A5 /* Views */,
 				0505DF851CEAB95D00DBD5A5 /* Models */,
 				0505DF861CEAB95D00DBD5A5 /* ViewControllers */,
@@ -208,13 +223,6 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		0505DF831CEAB95D00DBD5A5 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		0505DF841CEAB95D00DBD5A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +278,7 @@
 		D377B98A9A70CF519A67B179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				050592701CF0968300F4E6C9 /* SystemConfiguration.framework */,
 				565551A496184F0F417253D9 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -510,6 +519,7 @@
 				0505DF891CEAB9B900DBD5A5 /* AppDelegate.m in Sources */,
 				0505DFA01CEAF72400DBD5A5 /* GooglePlaceService.m in Sources */,
 				050592621CF0650200F4E6C9 /* PlaceTypesTableViewController.m in Sources */,
+				0505926F1CF091C000F4E6C9 /* Reachability.m in Sources */,
 				0505DFA61CEB210500DBD5A5 /* MarkerDetailView.m in Sources */,
 				0505DF4F1CEAB1D100DBD5A5 /* main.m in Sources */,
 				0505DF991CEAED5B00DBD5A5 /* GooglePlaceMarker.m in Sources */,

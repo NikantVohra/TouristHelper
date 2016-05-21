@@ -12,6 +12,8 @@
 #import "MarkerDetailView.h"
 #import "OptimalRoute.h"
 #import "PlaceTypesTableViewController.h"
+#import "Reachability.h"
+
 @import GoogleMaps;
 
 @interface MapViewController() <CLLocationManagerDelegate, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate, PlaceTypesTableViewContollerDelegate>
@@ -22,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *markerImageVerticalBottomConstraint;
 @property (nonatomic, strong) GooglePlaceService *googlePlaceService;
 @property (nonatomic, strong) NSArray *placeSearchTypes;
+@property (nonatomic) Reachability *internetReachability;
 
 @end
 
@@ -35,6 +38,7 @@ double nearbyRadius = 1000;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLocationManager];
+    [self testInternetConnection];
     self.mapView.delegate = self;
     self.googlePlaceService = [[GooglePlaceService alloc] init];
     self.placeSearchTypes = @[@"restaurant", @"bakery", @"cafe", @"museum", @"movie_theater", @"bar", @"grocery_or_supermarket"];
@@ -45,7 +49,9 @@ double nearbyRadius = 1000;
     // Dispose of any resources that can be recreated.
 }
 
-
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
+}
 
 -(void)getAddressFromLocationCoordinate:(CLLocationCoordinate2D) coordinate {
     GMSGeocoder *geocoder = [[GMSGeocoder alloc] init];
@@ -192,5 +198,45 @@ didFailAutocompleteWithError:(NSError *)error {
     self.placeSearchTypes = controller.selectedPlaceTypes;
     [self fetchNearbyPlaces:self.mapView.camera.target];
 }
+
+#pragma mark: Reachability Methods
+
+
+- (void)testInternetConnection
+{
+    self.internetReachability = [Reachability reachabilityWithHostname:@"www.google.com"];
+    __weak typeof(self) weakSelf = self;
+
+    // Internet is reachable
+    self.internetReachability.reachableBlock = ^(Reachability*reach)
+    {
+        // Update the UI on the main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"Yayyy, we have the interwebs!");
+        });
+    };
+    
+    // Internet is not reachable
+    self.internetReachability.unreachableBlock = ^(Reachability*reach)
+    {
+        // Update the UI on the main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf showNoInternetConnectionAlert];
+            NSLog(@"Someone broke the internet :(");
+        });
+    };
+    
+    [self.internetReachability startNotifier];
+}
+
+-(void)showNoInternetConnectionAlert {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet Connection" message:@"Please check your connection and try again..." preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:ok];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 
 @end
