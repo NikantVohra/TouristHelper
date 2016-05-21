@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.placeTypesDict =  @{@"restaurant" : @"Restaurant", @"movie_theater" : @"Movie Theater", @"bar" : @"Bar", @"cafe" : @"Cafe", @"grocery_or_supermarket" : @"Grocery Store", @"museum" : @"Museum" , @"bakery" : @"Bakery"};
+    self.placeTypesDict =  @{@"restaurant" : NSLocalizedString(@"Restaurant", nil), @"movie_theater" : NSLocalizedString(@"Movie Theater", nil), @"bar" : NSLocalizedString(@"Bar", nil), @"cafe" : NSLocalizedString(@"Cafe", nil), @"grocery_or_supermarket" : NSLocalizedString(@"Grocery Store", nil), @"museum" : NSLocalizedString(@"Museum", nil) , @"bakery" : NSLocalizedString(@"Bakery", nil)};
     self.placeTypes = [self.placeTypesDict.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 

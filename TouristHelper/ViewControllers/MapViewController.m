@@ -230,7 +230,7 @@ didFailAutocompleteWithError:(NSError *)error {
 }
 
 -(void)showNoInternetConnectionAlert {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet Connection" message:@"Please check your connection and try again..." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"No Internet Connection", nil)  message:NSLocalizedString(@"Please check your connection and try again...", nil)  preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:ok];
