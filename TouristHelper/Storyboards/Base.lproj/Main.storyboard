@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Tourist Helper-->
@@ -62,11 +63,18 @@
                                 <action selector="refeshBarButtonPressed:" destination="BYZ-38-t0r" id="uce-uN-OKw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="search" id="WQf-vg-5fv">
-                            <connections>
-                                <action selector="searchLocation:" destination="BYZ-38-t0r" id="U4w-jh-gYO"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="filter" id="O2o-OH-IEa">
+                                <connections>
+                                    <segue destination="ee0-jy-FHp" kind="presentation" identifier="PlaceTypeSegue" id="co8-rJ-JJ5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" systemItem="search" id="WQf-vg-5fv">
+                                <connections>
+                                    <action selector="searchLocation:" destination="BYZ-38-t0r" id="U4w-jh-gYO"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="xat-aU-f0c" id="Qyh-di-sF0"/>
@@ -77,6 +85,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1152" y="98"/>
+        </scene>
+        <!--Place Types-->
+        <scene sceneID="Kcz-QN-SOr">
+            <objects>
+                <tableViewController id="Cf9-Ko-dop" customClass="PlaceTypesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RYc-8w-gxs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaceTypeCell" id="nW4-8b-n1b">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nW4-8b-n1b" id="Cz9-t0-RQm">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Cf9-Ko-dop" id="ULz-lt-oi4"/>
+                            <outlet property="delegate" destination="Cf9-Ko-dop" id="2EM-wc-lBL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Place Types" id="v6S-oW-QYK">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="tU6-bb-yNB">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="Cf9-Ko-dop" id="2Gx-fd-lrx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mvd-pF-oYZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2835" y="114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eCW-w2-Mfm">
@@ -96,8 +139,27 @@
             </objects>
             <point key="canvasLocation" x="275" y="114"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="e71-f9-mfI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ee0-jy-FHp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QsA-8L-qaf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Cf9-Ko-dop" kind="relationship" relationship="rootViewController" id="aAo-Z5-m8I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="69e-gb-RdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1924" y="114"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="filter" width="25" height="25"/>
         <image name="mapMarker" width="30" height="49"/>
     </resources>
 </document>

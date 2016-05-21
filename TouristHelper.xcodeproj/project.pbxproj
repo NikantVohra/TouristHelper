@@ -10,6 +10,7 @@
 		050592581CF00DCE00F4E6C9 /* OptimalRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 050592571CF00DCE00F4E6C9 /* OptimalRoute.m */; };
 		0505925D1CF0330800F4E6C9 /* GooglePlaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505925C1CF0330800F4E6C9 /* GooglePlaceTests.m */; };
 		0505925F1CF0407100F4E6C9 /* OptimalRouteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505925E1CF0407100F4E6C9 /* OptimalRouteTests.m */; };
+		050592621CF0650200F4E6C9 /* PlaceTypesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 050592611CF0650200F4E6C9 /* PlaceTypesTableViewController.m */; };
 		0505DF4F1CEAB1D100DBD5A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF4E1CEAB1D100DBD5A5 /* main.m */; };
 		0505DF681CEAB1D100DBD5A5 /* TouristHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF671CEAB1D100DBD5A5 /* TouristHelperTests.m */; };
 		0505DF731CEAB1D100DBD5A5 /* TouristHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF721CEAB1D100DBD5A5 /* TouristHelperUITests.m */; };
@@ -51,6 +52,8 @@
 		050592571CF00DCE00F4E6C9 /* OptimalRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptimalRoute.m; sourceTree = "<group>"; };
 		0505925C1CF0330800F4E6C9 /* GooglePlaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooglePlaceTests.m; sourceTree = "<group>"; };
 		0505925E1CF0407100F4E6C9 /* OptimalRouteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptimalRouteTests.m; sourceTree = "<group>"; };
+		050592601CF0650200F4E6C9 /* PlaceTypesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceTypesTableViewController.h; sourceTree = "<group>"; };
+		050592611CF0650200F4E6C9 /* PlaceTypesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTypesTableViewController.m; sourceTree = "<group>"; };
 		0505DF4A1CEAB1D100DBD5A5 /* TouristHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0505DF4E1CEAB1D100DBD5A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0505DF5E1CEAB1D100DBD5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -240,6 +243,8 @@
 			children = (
 				0505DF901CEAB9D000DBD5A5 /* MapViewController.h */,
 				0505DF911CEAB9D000DBD5A5 /* MapViewController.m */,
+				050592601CF0650200F4E6C9 /* PlaceTypesTableViewController.h */,
+				050592611CF0650200F4E6C9 /* PlaceTypesTableViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				0505DF9C1CEAEE4900DBD5A5 /* GooglePlace.m in Sources */,
 				0505DF891CEAB9B900DBD5A5 /* AppDelegate.m in Sources */,
 				0505DFA01CEAF72400DBD5A5 /* GooglePlaceService.m in Sources */,
+				050592621CF0650200F4E6C9 /* PlaceTypesTableViewController.m in Sources */,
 				0505DFA61CEB210500DBD5A5 /* MarkerDetailView.m in Sources */,
 				0505DF4F1CEAB1D100DBD5A5 /* main.m in Sources */,
 				0505DF991CEAED5B00DBD5A5 /* GooglePlaceMarker.m in Sources */,

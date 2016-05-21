@@ -11,15 +11,18 @@
 #import "GooglePlaceMarker.h"
 #import "MarkerDetailView.h"
 #import "OptimalRoute.h"
+#import "PlaceTypesTableViewController.h"
 @import GoogleMaps;
 
-@interface MapViewController() <CLLocationManagerDelegate, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate>
+@interface MapViewController() <CLLocationManagerDelegate, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate, PlaceTypesTableViewContollerDelegate>
 
 @property (weak, nonatomic) IBOutlet GMSMapView *mapView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *markerImageVerticalBottomConstraint;
 @property (nonatomic, strong) GooglePlaceService *googlePlaceService;
+@property (nonatomic, strong) NSArray *placeSearchTypes;
+
 @end
 
 
@@ -34,6 +37,7 @@ double nearbyRadius = 1000;
     [self setupLocationManager];
     self.mapView.delegate = self;
     self.googlePlaceService = [[GooglePlaceService alloc] init];
+    self.placeSearchTypes = @[@"restaurant", @"bakery", @"cafe", @"museum", @"movie_theater", @"bar", @"grocery_or_supermarket"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,7 +66,7 @@ double nearbyRadius = 1000;
 
 -(void)fetchNearbyPlaces:(CLLocationCoordinate2D) coordinate {
     [self.mapView clear];
-    [self.googlePlaceService fetchNearbyPlacesFromLocation:coordinate withinRadius:nearbyRadius types:nil onCompletion:^(NSArray *googlePlaces, NSError *error) {
+    [self.googlePlaceService fetchNearbyPlacesFromLocation:coordinate withinRadius:nearbyRadius types:self.placeSearchTypes onCompletion:^(NSArray *googlePlaces, NSError *error) {
         if(error == nil) {
             for(GooglePlace *place in googlePlaces) {
                 GooglePlaceMarker *marker = [[GooglePlaceMarker alloc] initWithPlace:place];
@@ -89,6 +93,16 @@ double nearbyRadius = 1000;
     GMSAutocompleteViewController *autocompleteController = [[GMSAutocompleteViewController alloc] init];
     autocompleteController.delegate = self;
     [self presentViewController:autocompleteController animated:YES completion:nil];
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"PlaceTypeSegue"]) {
+        UINavigationController *navController = segue.destinationViewController;
+        PlaceTypesTableViewController *viewController = (PlaceTypesTableViewController *)navController.topViewController;
+        viewController.selectedPlaceTypes = [self.placeSearchTypes mutableCopy];
+        viewController.delegate = self;
+    }
 }
 
 #pragma mark : CLLocationManager Methods
@@ -156,6 +170,7 @@ double nearbyRadius = 1000;
 -(void)viewController:(GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(GMSPlace *)place {
     [self dismissViewControllerAnimated:YES completion:nil];
     self.mapView.camera =[GMSCameraPosition cameraWithTarget:place.coordinate zoom:15 bearing:0 viewingAngle:0];
+    [self fetchNearbyPlaces:self.mapView.camera.target];
 
 }
 
@@ -168,6 +183,14 @@ didFailAutocompleteWithError:(NSError *)error {
 // User canceled the operation.
 - (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark : PlaceTypesTableViewContollerDelegate methods
+
+-(void)placesTypeController:(PlaceTypesTableViewController *)controller didFilterPlaceTypes:(NSArray *)placeTypes {
+    [self dismissViewControllerAnimated:true completion:nil];
+    self.placeSearchTypes = controller.selectedPlaceTypes;
+    [self fetchNearbyPlaces:self.mapView.camera.target];
 }
 
 @end
