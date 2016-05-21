@@ -37,8 +37,6 @@
         double currentMinDistance = DBL_MAX;
         
         for(int j = 0; j < numPlaces;j++){
-            NSLog(@"minplaceindex : %ld", (long)currentMinPlaceIndex);
-
             if(visitedPlaces[j]) {
                 continue;
             }
@@ -48,7 +46,6 @@
                 currentMinPlaceIndex = j;
             }
         }
-        NSLog(@"minplaceindex : %ld", (long)currentMinPlaceIndex);
         currentPlace = googlePlaces[currentMinPlaceIndex];
         [optimalRoute addCoordinate:currentPlace.locationCoordinate];
         visitedPlaces[currentMinPlaceIndex] = true;

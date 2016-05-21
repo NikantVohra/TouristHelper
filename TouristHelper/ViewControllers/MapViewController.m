@@ -26,7 +26,7 @@
 
 @implementation MapViewController
 
-double nearbyRadius = 2000;
+double nearbyRadius = 1000;
 
 
 - (void)viewDidLoad {
@@ -122,6 +122,8 @@ double nearbyRadius = 2000;
 -(UIView *)mapView:(GMSMapView *)mapView markerInfoContents:(nonnull GMSMarker *)marker {
     MarkerDetailView *markerDetailView = [[[NSBundle mainBundle]loadNibNamed:@"MarkerDetailView" owner:self options:nil] firstObject];
     GooglePlaceMarker *placeMarker = (GooglePlaceMarker *)marker;
+    NSLog(@"marker %@", placeMarker.place.placeType);
+
     if(markerDetailView) {
         
         markerDetailView.placeNameLabel.text = placeMarker.place.name;

@@ -21,7 +21,7 @@
 
 NSString *const GooglePlacesAPIKey = @"AIzaSyD_1wjarbzsxkpAYz_RoKX0CIzS0Ba7USs";
 NSString *const GooglePlacesAPIBaseURL = @"https://maps.googleapis.com/maps/api/place/";
-NSString *const defaultPlaceTypes = @"food";
+NSString *const defaultPlaceTypes = @"food|museum|stadium|movie_theater";
 
 -(instancetype)init {
     if(self = [super init]) {
@@ -59,20 +59,20 @@ NSString *const defaultPlaceTypes = @"food";
                 NSArray *fetchedPlaces = json[@"results"];
                 for(NSDictionary *fetchedPlace in fetchedPlaces) {
                     GooglePlace *googlePlace = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
-                    [googlePlaces addObject:googlePlace];
-//                    dispatch_group_enter(fetchPlacesGroup);
-//                        // Do stuff on a global background queue here
-//                    [self fetchPlaceInfoWithId:googlePlace.placeId onCompletion:^(GooglePlace *place, NSError *error) {
-//                        if(error == nil) {
-//                            [googlePlaces addObject:place];
-//                        }
-//                        else {
-//                            storedError = error;
-//                        }
-//                        dispatch_group_leave(fetchPlacesGroup);
-//
-//                        
-//                    }];
+                   // [googlePlaces addObject:googlePlace];
+                    dispatch_group_enter(fetchPlacesGroup);
+                        // Do stuff on a global background queue here
+                    [self fetchPlaceInfoWithId:googlePlace.placeId onCompletion:^(GooglePlace *place, NSError *error) {
+                        if(error == nil) {
+                            [googlePlaces addObject:place];
+                        }
+                        else {
+                            storedError = error;
+                        }
+                        dispatch_group_leave(fetchPlacesGroup);
+
+                        
+                    }];
                 }
                 
             }
@@ -110,17 +110,17 @@ NSString *const defaultPlaceTypes = @"food";
             if(!conversionError) {
                 NSDictionary *fetchedPlace = json[@"result"];
                 place = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
-                [self fetchPhotoForPlace:place withCompletion:^(UIImage *image, NSError *error) {
-                    if(error == nil) {
-                        place.photo = image;
+//                [self fetchPhotoForPlace:place withCompletion:^(UIImage *image, NSError *error) {
+//                    if(error == nil) {
+//                        place.photo = image;
                         completion(place, nil);
                        
-                    }
-                    else {
-                        completion(nil, error);
-                        
-                    }
-                }];
+//                    }
+//                    else {
+//                        completion(nil, error);
+//                        
+//                    }
+//                }];
             }
             
             
