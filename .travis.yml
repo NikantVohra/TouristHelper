@@ -1,0 +1,11 @@
+language: objective-c  #1
+osx_image: xcode7.3
+xcode_sdk: iphonesimulator9.3
+
+before_install:
+  - sudo gem install xcpretty
+
+script:
+ - xcodebuild -workspace TouristHelper.xcworkspace -scheme  TouristHelper -sdk iphonesimulator9.3 build test  | xcpretty -c && exit ${PIPESTATUS[0]}
+
+
