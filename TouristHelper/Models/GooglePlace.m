@@ -27,4 +27,10 @@
     }
 }
 
+-(double)distanceFromPlace:(GooglePlace *)place {
+    CLLocation *place1Location = [[CLLocation alloc] initWithLatitude:self.locationCoordinate.latitude longitude:self.locationCoordinate.longitude];
+    CLLocation *place2Location = [[CLLocation alloc] initWithLatitude: place.locationCoordinate.latitude longitude:place.locationCoordinate.longitude];
+    return [place1Location distanceFromLocation: place2Location];
+
+}
 @end

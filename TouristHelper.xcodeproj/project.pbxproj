@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050592581CF00DCE00F4E6C9 /* OptimalRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 050592571CF00DCE00F4E6C9 /* OptimalRoute.m */; };
 		0505DF4F1CEAB1D100DBD5A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF4E1CEAB1D100DBD5A5 /* main.m */; };
 		0505DF681CEAB1D100DBD5A5 /* TouristHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF671CEAB1D100DBD5A5 /* TouristHelperTests.m */; };
 		0505DF731CEAB1D100DBD5A5 /* TouristHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505DF721CEAB1D100DBD5A5 /* TouristHelperUITests.m */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		050592561CF00DCE00F4E6C9 /* OptimalRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptimalRoute.h; sourceTree = "<group>"; };
+		050592571CF00DCE00F4E6C9 /* OptimalRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptimalRoute.m; sourceTree = "<group>"; };
 		0505DF4A1CEAB1D100DBD5A5 /* TouristHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0505DF4E1CEAB1D100DBD5A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0505DF5E1CEAB1D100DBD5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -216,6 +219,8 @@
 		0505DF851CEAB95D00DBD5A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				050592561CF00DCE00F4E6C9 /* OptimalRoute.h */,
+				050592571CF00DCE00F4E6C9 /* OptimalRoute.m */,
 				0505DF971CEAED5B00DBD5A5 /* GooglePlaceMarker.h */,
 				0505DF981CEAED5B00DBD5A5 /* GooglePlaceMarker.m */,
 				0505DF9A1CEAEE4900DBD5A5 /* GooglePlace.h */,
@@ -496,6 +501,7 @@
 				0505DFA61CEB210500DBD5A5 /* MarkerDetailView.m in Sources */,
 				0505DF4F1CEAB1D100DBD5A5 /* main.m in Sources */,
 				0505DF991CEAED5B00DBD5A5 /* GooglePlaceMarker.m in Sources */,
+				050592581CF00DCE00F4E6C9 /* OptimalRoute.m in Sources */,
 				0505DF921CEAB9D000DBD5A5 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

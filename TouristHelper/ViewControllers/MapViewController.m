@@ -10,6 +10,7 @@
 #import "GooglePlaceService.h"
 #import "GooglePlaceMarker.h"
 #import "MarkerDetailView.h"
+#import "OptimalRoute.h"
 @import GoogleMaps;
 
 @interface MapViewController() <CLLocationManagerDelegate, GMSMapViewDelegate>
@@ -67,8 +68,18 @@ double nearbyRadius = 1000;
                 marker.map = self.mapView;
             }
         }
+        OptimalRoute *optimalRoute = [[OptimalRoute alloc] initWithPlaces:googlePlaces forStartingLocation:coordinate];
+        [self drawPathOnMap:optimalRoute.path];
     }];
 }
+
+-(void)drawPathOnMap:(GMSPath *)path {
+    GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
+    polyline.strokeWidth = 2;
+    polyline.map = self.mapView;
+}
+
+
 - (IBAction)refeshBarButtonPressed:(id)sender {
     [self fetchNearbyPlaces:self.mapView.camera.target];
 }
@@ -119,7 +130,6 @@ double nearbyRadius = 1000;
         else {
             markerDetailView.placeImageView.image = [UIImage imageNamed:@"placeholder"];
         }
-        
         
     }
 

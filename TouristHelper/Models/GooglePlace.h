@@ -21,4 +21,6 @@
 
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
+-(double)distanceFromPlace:(GooglePlace *)place;
+
 @end

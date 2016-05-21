@@ -47,7 +47,6 @@ NSString *const defaultPlaceTypes = @"food";
     
     __block NSError *storedError;
     self.fetchNearbyPlacesTask = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         if(!error) {
             NSMutableArray *googlePlaces = [[NSMutableArray alloc] init];
             NSError* conversionError;
@@ -58,26 +57,27 @@ NSString *const defaultPlaceTypes = @"food";
                                                                    error:&conversionError];
             if(!conversionError) {
                 NSArray *fetchedPlaces = json[@"results"];
-               // NSDictionary *fetchedPlace = [fetchedPlaces objectAtIndex:0];
                 for(NSDictionary *fetchedPlace in fetchedPlaces) {
                     GooglePlace *googlePlace = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
-                    dispatch_group_enter(fetchPlacesGroup);
-                        // Do stuff on a global background queue here
-                    [self fetchPlaceInfoWithId:googlePlace.placeId onCompletion:^(GooglePlace *place, NSError *error) {
-                        if(error == nil) {
-                            [googlePlaces addObject:place];
-                        }
-                        else {
-                            storedError = error;
-                        }
-                        dispatch_group_leave(fetchPlacesGroup);
-
-                        
-                    }];
+                    [googlePlaces addObject:googlePlace];
+//                    dispatch_group_enter(fetchPlacesGroup);
+//                        // Do stuff on a global background queue here
+//                    [self fetchPlaceInfoWithId:googlePlace.placeId onCompletion:^(GooglePlace *place, NSError *error) {
+//                        if(error == nil) {
+//                            [googlePlaces addObject:place];
+//                        }
+//                        else {
+//                            storedError = error;
+//                        }
+//                        dispatch_group_leave(fetchPlacesGroup);
+//
+//                        
+//                    }];
                 }
                 
             }
             dispatch_group_notify(fetchPlacesGroup, dispatch_get_main_queue(), ^{
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 completion(googlePlaces, storedError);
             });
             
@@ -86,6 +86,7 @@ NSString *const defaultPlaceTypes = @"food";
         
         else {
             dispatch_async(dispatch_get_main_queue(), ^{
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 completion(nil, error);
             });
         }
@@ -97,6 +98,7 @@ NSString *const defaultPlaceTypes = @"food";
 
 -(void)fetchPlaceInfoWithId:(NSString *)placeId onCompletion:(void(^)(GooglePlace *place, NSError *error))completion{
     NSString *url = [NSString stringWithFormat:@"%@details/json?placeid=%@&key=%@", GooglePlacesAPIBaseURL, placeId, GooglePlacesAPIKey];
+    
     url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if(!error) {
