@@ -31,7 +31,6 @@
 }
 
 
-
 -(void)findOptimalRoute {
     GooglePlace *startingPlace = [[GooglePlace alloc] init];
     startingPlace.locationCoordinate = self.origin;

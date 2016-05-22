@@ -24,5 +24,4 @@
 -(double)distanceFromPlace:(GooglePlace *)place;
 
 
-
 @end
