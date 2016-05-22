@@ -11,8 +11,17 @@
 
 @interface GooglePlaceMarker : GMSMarker
 
+/** The google place for the marker. */
+
 @property(nonatomic, strong) GooglePlace *place;
 
+/**
+ *  Initialises the marker with a google place
+ *
+ *  @param place
+ *
+ *  Sets the different properties for the marker
+ */
 -(instancetype)initWithPlace:(GooglePlace *)place;
 
 @end

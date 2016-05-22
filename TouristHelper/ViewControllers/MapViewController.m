@@ -161,7 +161,7 @@ double nearbyRadius = 2000;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     markerDetailView.placeImageView.image = image;
                     placeMarker.place.photo = image;
-                    [self.mapView setSelectedMarker:marker];
+                    [self.mapView setSelectedMarker:marker];//Have to set the marker again to reflect he fetched photo
 
                 });
             }];
@@ -172,7 +172,7 @@ double nearbyRadius = 2000;
 
 -(void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture {
     if(gesture) {
-        mapView.selectedMarker = nil;
+        mapView.selectedMarker = nil; 
     }
 }
 

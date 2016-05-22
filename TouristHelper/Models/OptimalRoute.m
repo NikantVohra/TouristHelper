@@ -35,7 +35,7 @@
  *  This problem is a classic TSP problem https://simple.wikipedia.org/wiki/Travelling_salesman_problem
  *  TSP is a NP hard problem and for 100 places finding the optimal solution will take
     an insane amountof time
- *  The solution presented here is an approximate algorithm called the Greedy Nearest Neighbour for all starting which gives a solution usually within 10 or 20% of the shortest possible and can handle thousands of cities (https://web.archive.org/web/20131202232743/http://nbviewer.ipython.org/url/norvig.com/ipython/TSPv3.ipynb)
+ *  The solution presented here is an approximate algorithm called the Greedy Nearest Neighbour for all starting places which gives a solution usually within 10 or 20% of the shortest possible and can handle thousands of cities (https://web.archive.org/web/20131202232743/http://nbviewer.ipython.org/url/norvig.com/ipython/TSPv3.ipynb)
  */
 
 -(void)findOptimalRoute {

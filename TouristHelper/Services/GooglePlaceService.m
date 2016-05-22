@@ -65,18 +65,16 @@ static int maxPlaces = 100;
                 }
                 for(NSDictionary *fetchedPlace in fetchedPlaces) {
                     GooglePlace *googlePlace = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
-                    [googlePlaces addObject:googlePlace];
-//                    dispatch_group_enter(fetchPlacesGroup);
-                        // Do stuff on a global background queue here
-//                    [self fetchPlaceInfoWithId:googlePlace.placeId onCompletion:^(GooglePlace *place, NSError *error) {
-//                        if(error == nil) {
-//                            [googlePlaces addObject:place];
-//                        }
-//                        else {
-//                            storedError = error;
-//                        }
-//                        dispatch_group_leave(fetchPlacesGroup);
-//                    }];
+                    dispatch_group_enter(fetchPlacesGroup);
+                    [self fetchPlaceInfoWithId:googlePlace.placeId onCompletion:^(GooglePlace *place, NSError *error) {
+                        if(error == nil) {
+                            [googlePlaces addObject:place];
+                        }
+                        else {
+                            storedError = error;
+                        }
+                        dispatch_group_leave(fetchPlacesGroup);
+                    }];
                 }
                 
             }
@@ -117,7 +115,6 @@ static int maxPlaces = 100;
                 completion(place, nil);
 
             }
-            
             
         }
         else {
