@@ -137,6 +137,7 @@ NSString *const defaultPlaceTypes = @"food|museum|stadium|movie_theater";
         UIImage *cachedImage = [self.photoCache objectForKey:place.photoReference];
         if(cachedImage) {
             place.photo = cachedImage;
+            completion(cachedImage, nil);
         }
         else {
             NSString *url = [NSString stringWithFormat:@"%@photo?maxwidth=200&photoreference=%@&key=%@", GooglePlacesAPIBaseURL, place.photoReference, GooglePlacesAPIKey];
@@ -154,7 +155,7 @@ NSString *const defaultPlaceTypes = @"food|museum|stadium|movie_theater";
     }
     else {
         place.photo = nil;
-        completion(nil, nil);
+        completion([UIImage imageNamed:@"placeholder"], nil);
     }
 }
 

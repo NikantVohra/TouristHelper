@@ -12,6 +12,7 @@
 @interface OptimalRoute : NSObject
 
 @property(nonatomic, strong) GMSPath *path;
+@property(nonatomic) double totalDistance;
 
 -(instancetype)initWithPlaces:(NSArray *)googlePlaces forStartingLocation:(CLLocationCoordinate2D)origin;
 

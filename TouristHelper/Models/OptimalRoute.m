@@ -16,6 +16,7 @@
     if(self) {
         GooglePlace *startingPlace = [[GooglePlace alloc] init];
         startingPlace.locationCoordinate = origin;
+        self.totalDistance = 0.0;
         self.path = [self findOptimalRoute: googlePlaces forStartingPlace:startingPlace];
     }
     return self;
@@ -47,6 +48,7 @@
             }
         }
         currentPlace = googlePlaces[currentMinPlaceIndex];
+        self.totalDistance += currentMinDistance;
         [optimalRoute addCoordinate:currentPlace.locationCoordinate];
         visitedPlaces[currentMinPlaceIndex] = true;
     }

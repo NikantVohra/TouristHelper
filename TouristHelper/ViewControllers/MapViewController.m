@@ -80,6 +80,7 @@ double nearbyRadius = 1000;
             }
         }
         OptimalRoute *optimalRoute = [[OptimalRoute alloc] initWithPlaces:googlePlaces forStartingLocation:coordinate];
+        NSLog(@"distance : %f", optimalRoute.totalDistance);
         [self drawPathOnMap:optimalRoute.path];
     }];
 }
@@ -151,17 +152,19 @@ double nearbyRadius = 1000;
     NSLog(@"marker %@", placeMarker.place.placeType);
 
     if(markerDetailView) {
-        
         markerDetailView.placeNameLabel.text = placeMarker.place.name;
         if(placeMarker.place.photo) {
             markerDetailView.placeImageView.image = placeMarker.place.photo;
         }
         else {
             markerDetailView.placeImageView.image = [UIImage imageNamed:@"placeholder"];
+            [self.googlePlaceService fetchPhotoForPlace:placeMarker.place withCompletion:^(UIImage *image, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    markerDetailView.placeImageView.image = image;
+                });
+            }];
         }
-        
     }
-
     return markerDetailView;
 }
 

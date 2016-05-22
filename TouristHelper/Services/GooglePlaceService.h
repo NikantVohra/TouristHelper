@@ -17,4 +17,6 @@
 
 -(void)fetchPlaceInfoWithId:(NSString *)placeId onCompletion:(void(^)(GooglePlace *place, NSError *error))completion;
 
+-(void)fetchPhotoForPlace:(GooglePlace *)place withCompletion:(void(^)(UIImage *image, NSError *error)) completion;
+
 @end
