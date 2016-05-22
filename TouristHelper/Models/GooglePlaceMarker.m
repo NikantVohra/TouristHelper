@@ -17,9 +17,7 @@
         UIImage *image = [UIImage imageNamed:place.placeType];
         if(image) {
             self.icon = image;
-        } else {
-            self.icon = [UIImage imageNamed:@"mapMarker"];
-        }
+        } 
         self.groundAnchor = CGPointMake(0.5, 1);
         self.appearAnimation = kGMSMarkerAnimationPop;
         return self;
