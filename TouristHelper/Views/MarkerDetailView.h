@@ -10,7 +10,12 @@
 
 @interface MarkerDetailView : UIView
 
+/** The image view for the marker detail view. */
+
 @property (weak, nonatomic) IBOutlet UIImageView *placeImageView;
+
+/** The placen label for the marker detail view. */
+
 @property (weak, nonatomic) IBOutlet UILabel *placeNameLabel;
 
 @end

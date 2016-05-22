@@ -21,7 +21,7 @@
     double lat = 37.376;
     double lng = -121.957;
     self.places = [NSMutableArray new];
-    for(int i = 0;i < 100;i++) {
+    for(int i = 0;i < 50;i++) {
         lat += 0.01;
         lng += 0.01;
         GooglePlace *place = [[GooglePlace alloc] init];
@@ -38,7 +38,7 @@
 
 - (void)testOptimalRoutes {
     OptimalRoute *route = [[OptimalRoute alloc] initWithPlaces:self.places forStartingLocation:CLLocationCoordinate2DMake(37.376, -121.957)];
-    XCTAssertEqual(route.path.count, 102);
+    XCTAssertEqual(route.path.count, 52);
 }
 
 -(void)testOptimalRouteAlgorithmPerformance {
