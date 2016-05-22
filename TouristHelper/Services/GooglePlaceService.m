@@ -17,11 +17,14 @@
 
 @end
 
+
+
 @implementation GooglePlaceService
 
 NSString *const GooglePlacesAPIKey = @"AIzaSyCfKkqXD678HHpn11DCWwdYOoZ6M44B8M4";
 NSString *const GooglePlacesAPIBaseURL = @"https://maps.googleapis.com/maps/api/place/";
 NSString *const defaultPlaceTypes = @"food|museum|stadium|movie_theater";
+static int maxPlaces = 100;
 
 -(instancetype)init {
     if(self = [super init]) {
@@ -57,6 +60,9 @@ NSString *const defaultPlaceTypes = @"food|museum|stadium|movie_theater";
                                                                    error:&conversionError];
             if(!conversionError) {
                 NSArray *fetchedPlaces = json[@"results"];
+                if(fetchedPlaces.count > maxPlaces) {
+                    fetchedPlaces = [fetchedPlaces subarrayWithRange:NSMakeRange(0, maxPlaces)];
+                }
                 for(NSDictionary *fetchedPlace in fetchedPlaces) {
                     GooglePlace *googlePlace = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
                     [googlePlaces addObject:googlePlace];
