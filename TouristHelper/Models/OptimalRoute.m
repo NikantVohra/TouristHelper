@@ -30,6 +30,13 @@
     return self;
 }
 
+/**
+ *  Finds the optimal route and populates path and total distance properties
+ *  This problem is a classic TSP problem https://simple.wikipedia.org/wiki/Travelling_salesman_problem
+ *  TSP is a NP hard problem and for 100 places finding the optimal solution will take
+    an insane amountof time
+ *  The solution presented here is an approximate algorithm called the Greedy Nearest Neighbour for all starting which gives a solution usually within 10 or 20% of the shortest possible and can handle thousands of cities (https://web.archive.org/web/20131202232743/http://nbviewer.ipython.org/url/norvig.com/ipython/TSPv3.ipynb)
+ */
 
 -(void)findOptimalRoute {
     GooglePlace *startingPlace = [[GooglePlace alloc] init];
@@ -53,6 +60,12 @@
     }
     self.totalDistance = minDistance;
 }
+
+/**
+ *  Finds the optimal path for a given starting place using Greedy Nearest Neighbor
+ *  @param origin
+ *  returns the optimal path
+ */
 
 -(GMSPath *)findOptimalRouteWithStartingPlace:(GooglePlace *)origin {
     GMSMutablePath *optimalRoute = [[GMSMutablePath alloc] init];
@@ -78,6 +91,12 @@
     return optimalRoute;
 }
 
+/**
+ *  Finds the nearest neighbour for a place
+ *  @param googlePlace
+ *  @param an array for already visited places
+ *  returns a NSDictionary with structure @{"distance" : distance of nearest neighbour, "index" : index for nearest neighbour}
+ */
 
 -(NSDictionary *)findNearestNeighbourforPlace:(GooglePlace *)place visitedPlaces:(BOOL[]) visitedPlaces
 {
