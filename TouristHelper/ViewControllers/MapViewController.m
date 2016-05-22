@@ -32,7 +32,7 @@
 
 @implementation MapViewController
 
-double nearbyRadius = 1000;
+double nearbyRadius = 2000;
 
 
 - (void)viewDidLoad {
@@ -152,7 +152,7 @@ double nearbyRadius = 1000;
     NSLog(@"marker %@", placeMarker.place.placeType);
 
     if(markerDetailView) {
-        markerDetailView.placeNameLabel.text = placeMarker.place.name;
+        markerDetailView.placeNameLabel.text = placeMarker.place.name ;
         if(placeMarker.place.photo) {
             markerDetailView.placeImageView.image = placeMarker.place.photo;
         }
@@ -161,6 +161,9 @@ double nearbyRadius = 1000;
             [self.googlePlaceService fetchPhotoForPlace:placeMarker.place withCompletion:^(UIImage *image, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     markerDetailView.placeImageView.image = image;
+                    placeMarker.place.photo = image;
+                    [self.mapView setSelectedMarker:marker];
+
                 });
             }];
         }

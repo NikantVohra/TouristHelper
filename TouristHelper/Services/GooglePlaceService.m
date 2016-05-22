@@ -61,7 +61,7 @@ NSString *const defaultPlaceTypes = @"food|museum|stadium|movie_theater";
                     GooglePlace *googlePlace = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
                     [googlePlaces addObject:googlePlace];
 //                    dispatch_group_enter(fetchPlacesGroup);
-//                        // Do stuff on a global background queue here
+                        // Do stuff on a global background queue here
 //                    [self fetchPlaceInfoWithId:googlePlace.placeId onCompletion:^(GooglePlace *place, NSError *error) {
 //                        if(error == nil) {
 //                            [googlePlaces addObject:place];
@@ -108,17 +108,8 @@ NSString *const defaultPlaceTypes = @"food|museum|stadium|movie_theater";
             if(!conversionError) {
                 NSDictionary *fetchedPlace = json[@"result"];
                 place = [[GooglePlace alloc] initWithDictionary:fetchedPlace];
-//                [self fetchPhotoForPlace:place withCompletion:^(UIImage *image, NSError *error) {
-//                    if(error == nil) {
-//                        place.photo = image;
-                        completion(place, nil);
-                       
-//                    }
-//                    else {
-//                        completion(nil, error);
-//                        
-//                    }
-//                }];
+                completion(place, nil);
+
             }
             
             
