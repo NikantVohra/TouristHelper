@@ -12,4 +12,5 @@ This app tries to solve the classic [Travelling Salesman Problem](https://simple
  1. Clone the repository.
  2. Run pod install inside the repository.
  3. Open TouristHelper.xcworkspace.
- 4. Run or test various scenarios. 
+ 4. Run the app on an actual device or choose custom location from simulator
+ debug menu. 
