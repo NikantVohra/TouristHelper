@@ -13,6 +13,7 @@
 #import "OptimalRoute.h"
 #import "PlaceTypesTableViewController.h"
 #import "Reachability.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @import GoogleMaps;
 
@@ -72,16 +73,22 @@ double nearbyRadius = 2000;
 
 -(void)fetchNearbyPlaces:(CLLocationCoordinate2D) coordinate {
     [self.mapView clear];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Fetching Places", nil)];
     [self.googlePlaceService fetchNearbyPlacesFromLocation:coordinate withinRadius:nearbyRadius types:self.placeSearchTypes onCompletion:^(NSArray *googlePlaces, NSError *error) {
+        [SVProgressHUD dismiss];
         if(error == nil) {
             for(GooglePlace *place in googlePlaces) {
                 GooglePlaceMarker *marker = [[GooglePlaceMarker alloc] initWithPlace:place];
                 marker.map = self.mapView;
             }
+            OptimalRoute *optimalRoute = [[OptimalRoute alloc] initWithPlaces:googlePlaces forStartingLocation:coordinate];
+            NSLog(@"distance : %f", optimalRoute.totalDistance);
+            [self drawPathOnMap:optimalRoute.path];
         }
-        OptimalRoute *optimalRoute = [[OptimalRoute alloc] initWithPlaces:googlePlaces forStartingLocation:coordinate];
-        NSLog(@"distance : %f", optimalRoute.totalDistance);
-        [self drawPathOnMap:optimalRoute.path];
+        else {
+            [self showNoInternetConnectionAlert];
+        }
+        
     }];
 }
 

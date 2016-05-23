@@ -21,7 +21,7 @@
 
 @implementation GooglePlaceService
 
-NSString *const GooglePlacesAPIKey = @"AIzaSyC0uYRChPJA9bZCPOEcYBTBw01pOmGU1WE";
+NSString *const GooglePlacesAPIKey = @"AIzaSyA8WXGU6hBdiD2cehCu3lZWd3KRfJNkzbg";
 NSString *const GooglePlacesAPIBaseURL = @"https://maps.googleapis.com/maps/api/place/";
 NSString *const defaultPlaceTypes = @"food|museum|stadium|movie_theater";
 static int maxPlaces = 100;
