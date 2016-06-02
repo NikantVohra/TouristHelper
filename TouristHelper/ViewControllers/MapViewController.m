@@ -86,7 +86,7 @@ double nearbyRadius = 2000;
             [self drawPathOnMap:optimalRoute.path];
         }
         else {
-            [self showNoInternetConnectionAlert];
+           // [self showNoInternetConnectionAlert];
         }
         
     }];
